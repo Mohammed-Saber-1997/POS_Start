@@ -10,12 +10,8 @@ Future<void> initAppModule() async {
   final sharedPrefs = await SharedPreferences.getInstance();
 
   // shared prefs instance
-  di.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
+  instance.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
 
   // app prefs instance
-  di.registerLazySingleton<AppPreferences>(() => AppPreferences(instance()));
-
-  // // network info
-  // instance.registerLazySingleton<NetworkInfo>(
-  //     () => NetworkInfoImpl(DataConnectionChecker()));
+  instance.registerLazySingleton<AppPreferences>(() => AppPreferences(instance()));
 }
