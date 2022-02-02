@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pos_start/src/src.dart';
+import 'package:pos_start/presentation/src/src.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const String prefsKeyLang = "PREFS_KEY_LANG";

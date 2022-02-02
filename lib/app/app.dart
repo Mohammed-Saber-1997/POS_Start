@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:pos_start/shared/di.dart';
-import 'package:pos_start/src/src.dart';
+import 'package:pos_start/cour/dependency_injection.dart';
+import 'package:pos_start/presentation/src/src.dart';
 
-import '../shared/app_prefs.dart';
+import '../cour/app_prefs.dart';
 
 class MyApp extends StatefulWidget {
   /// private named constructor.

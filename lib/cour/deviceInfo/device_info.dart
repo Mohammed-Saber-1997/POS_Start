@@ -2,7 +2,14 @@ import 'dart:io';
 
 import 'package:device_info/device_info.dart';
 import 'package:flutter/services.dart';
-import 'package:pos_start/models/device_info.dart';
+
+class DeviceInfo {
+  String name;
+  String identifier;
+  String version;
+
+  DeviceInfo(this.name, this.identifier, this.version);
+}
 
 Future<DeviceInfo> getDeviceDetails() async {
   String name = "Unknown";
