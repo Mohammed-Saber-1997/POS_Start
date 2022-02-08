@@ -1,4 +1,28 @@
 {
+
+ "Ser": "مسلسل",
+ "Barcode": "الباركود",
+ "Art. No": "الرقم",
+ "Item Description": "وصف العنصر",
+ "Qty": "بحث",
+ "Price": "السعر",
+ "Disc": "خصم",
+ "Total Price": "السعر الاجمالي",
+ "Total": "الاجمالي",
+
+
+ "Change Qty": "تغيير الكمية",
+ "Discount": "خصم",
+ "Price Chick": "تغيير الكمية",
+ "Repeat Last Item": "تكرار اخر عنصر",
+ "Search": "بحث",
+ "Open Drawer": "فتح القائمة الجانبية",
+ "Delete all Items": "مسح كل العناصر",
+ "Delete Selected Item": "مسح العنصر المختار",
+ "Clear Input": "مسح المدخل",
+ "Lock": "قفل",
+
+
  "splash": "الصفحة الاوله",
  "login": "تسجيل الدخول",
  "loading": "جاري التحميل...",

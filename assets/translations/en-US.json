@@ -1,4 +1,28 @@
 {
+
+  "Ser": "Ser",
+  "Barcode": "Barcode",
+  "Art. No": "Art. No",
+  "Item Description": "Item Description",
+  "Qty": "Qty",
+  "Price": "Price",
+  "Disc": "Disc",
+  "Total Price": "Total Price",
+  "Total": "الاجمالي",
+
+
+  "Change Qty": "Change Qty",
+  "Discount": "Discount",
+  "Price Chick": "Price Chick",
+  "Repeat Last Item": "Repeat Last Item",
+  "Search": "Search",
+  "Open Drawer": "Open Drawer",
+  "Delete all Items": "Delete all Items",
+  "Delete Selected Item": "Delete Selected Item",
+  "Clear Input": "Clear Input",
+  "Lock": "Lock",
+
+
   "splash": "Splash Screen",
   "login": "Login Screen",
   "loading": "Loading....",

@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  static Color white = "#FFFFFF".colorFromHex;
-  static Color black = "#000000".colorFromHex;
+  static Color black = Color(0xFF222634);
+  static Color white = Color(0xFFfafafa);
+  static Color grey = Color(0xFF9ea2a7);
+  static Color red = Color(0xFFff0808);
+  static Color orange = Color(0xFFf27c3a);
+  static Color cyan = Color(0xFF06c2bc);
+
+  static Color lightBackground = Color(0xFFeef0f6);
+  static Color darkBackground = Color(0xFF0d1724);
+  static Color darkBackground2 = Color(0xFF1c2030);
 }
 
 extension HexColor on Color {
