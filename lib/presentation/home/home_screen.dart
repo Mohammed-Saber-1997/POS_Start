@@ -14,15 +14,15 @@ class HomeScreen extends StatelessWidget {
       body: Row(
         children: [
           leftPart(),
-          myVerticalDevider(),
+          myVerticalDivider(),
           Expanded(
             flex: 3,
             child: Column(
               children: [
                 topPart(),
                 mainPart(),
-                myHorizontalDevider(),
-                buttomPart(),
+                myHorizontalDivider(),
+                bottomPart(),
               ],
             ),
           ),

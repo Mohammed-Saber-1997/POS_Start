@@ -1,5 +1,11 @@
 {
 
+  "Administrator": "Administrator",
+  "contributor": "contributor",
+  "Total Invoice": "Total Invoice",
+  "Total": "Total",
+
+
   "Ser": "Ser",
   "Barcode": "Barcode",
   "Art. No": "Art. No",
@@ -8,7 +14,6 @@
   "Price": "Price",
   "Disc": "Disc",
   "Total Price": "Total Price",
-  "Total": "الاجمالي",
 
 
   "Change Qty": "Change Qty",

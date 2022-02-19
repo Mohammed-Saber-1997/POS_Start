@@ -52,7 +52,7 @@ class leftPart extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsetsDirectional.only(
                         top: 10, bottom: 10, end: 30),
-                    child: myHorizontalDevider(),
+                    child: myHorizontalDivider(),
                   ),
                   Row(
                     children: [
@@ -147,7 +147,7 @@ class leftPart extends StatelessWidget {
                 ),
               ),
             ),
-            myHorizontalDevider(),
+            myHorizontalDivider(),
             Container(
               height: 165,
               child: Column(

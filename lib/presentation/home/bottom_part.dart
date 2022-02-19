@@ -3,10 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
 import 'package:pos_start/presentation/src/color_manager.dart';
+import 'package:pos_start/presentation/widgets/default_button.dart';
 import 'package:pos_start/presentation/widgets/shared_widgets.dart';
 
-class buttomPart extends StatelessWidget {
-  const buttomPart({Key? key}) : super(key: key);
+class bottomPart extends StatelessWidget {
+  const bottomPart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class buttomPart extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(5.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
               children: [
@@ -63,6 +65,11 @@ class buttomPart extends StatelessWidget {
                       backgroundColor: defaultBackgroundColor,
                       name: 'Search'.tr(),
                       icon: CupertinoIcons.search,
+                      function: () => AppCubit.get(context).showSearchDialog(
+                        context,
+                        title: 'Item Search',
+                        body: 'Item Search',
+                      ),
                     ),
                     myItem(
                       fontColor: defaultTextColor,
@@ -84,6 +91,12 @@ class buttomPart extends StatelessWidget {
                       iconColor: ColorManager.red,
                       height: 55,
                       width: 150,
+                      function: () => AppCubit.get(context).showCustomDialog(
+                        context,
+                        title: 'Delete All Items',
+                        body:
+                            'are you Sure you want to Delete All items from currant invoice ?',
+                      ),
                     ),
                     myItem(
                       fontColor: defaultTextColor,
@@ -95,6 +108,12 @@ class buttomPart extends StatelessWidget {
                       iconColor: ColorManager.orange,
                       height: 55,
                       width: 170,
+                      function: () => AppCubit.get(context).showCustomDialog(
+                        context,
+                        title: 'Delete Item',
+                        body:
+                            'are you Sure you want to Delete this item from currant invoice ?',
+                      ),
                     ),
                     myItem(
                       fontColor: defaultTextColor,
@@ -121,8 +140,8 @@ class buttomPart extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: myVerticalDevider(),
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: myVerticalDivider(),
             ),
             Column(
               children: [
@@ -137,6 +156,11 @@ class buttomPart extends StatelessWidget {
                           name: 'CASH',
                           height: 40,
                           width: 60,
+                          function: () => AppCubit.get(context).showPrintDialog(
+                            context,
+                            title: 'Print',
+                            body: 'Print',
+                          ),
                         ),
                         myItem(
                           backgroundColor: defaultTextColor,
@@ -156,6 +180,11 @@ class buttomPart extends StatelessWidget {
                       icon: CupertinoIcons.money_dollar_circle,
                       height: 90,
                       width: 120,
+                      function: () => AppCubit.get(context).showPaymentDialog(
+                        context,
+                        title: 'Payment',
+                        body: 'Payment',
+                      ),
                     ),
                   ],
                 ),

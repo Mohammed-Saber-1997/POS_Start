@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
 import 'package:pos_start/presentation/src/src.dart';
+import 'package:pos_start/presentation/widgets/default_button.dart';
 import 'package:pos_start/presentation/widgets/shared_widgets.dart';
 
 class topPart extends StatelessWidget {
@@ -39,6 +40,11 @@ class topPart extends StatelessWidget {
                   iconColor: ColorManager.grey,
                   height: 50,
                   width: 400,
+                  function: () => AppCubit.get(context).showSearchDialog(
+                    context,
+                    title: 'Item Search',
+                    body: 'Item Search',
+                  ),
                 ),
                 Spacer(),
                 myItem(
@@ -56,6 +62,11 @@ class topPart extends StatelessWidget {
                   iconColor: ColorManager.grey,
                   height: 50,
                   width: 50,
+                  function: () => AppCubit.get(context).showSettingsDialog(
+                    context,
+                    title: 'Settings',
+                    body: 'Settings',
+                  ),
                 ),
                 myItem(
                   fontColor: defaultTextColor,

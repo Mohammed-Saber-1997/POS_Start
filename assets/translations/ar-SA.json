@@ -1,5 +1,11 @@
 {
 
+ "Administrator": "الادمن",
+ "contributor": "المساهم",
+ "Total Invoice": "اجمالي الفاتورة",
+ "Total": "الاجمالي",
+
+
  "Ser": "مسلسل",
  "Barcode": "الباركود",
  "Art. No": "الرقم",
@@ -8,7 +14,6 @@
  "Price": "السعر",
  "Disc": "خصم",
  "Total Price": "السعر الاجمالي",
- "Total": "الاجمالي",
 
 
  "Change Qty": "تغيير الكمية",
@@ -16,7 +21,7 @@
  "Price Chick": "تغيير الكمية",
  "Repeat Last Item": "تكرار اخر عنصر",
  "Search": "بحث",
- "Open Drawer": "فتح القائمة الجانبية",
+ "Open Drawer": "فتح القائمة",
  "Delete all Items": "مسح كل العناصر",
  "Delete Selected Item": "مسح العنصر المختار",
  "Clear Input": "مسح المدخل",

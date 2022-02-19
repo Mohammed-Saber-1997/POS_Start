@@ -7,6 +7,11 @@ class ColorManager {
   static Color red = Color(0xFFff0808);
   static Color orange = Color(0xFFf27c3a);
   static Color cyan = Color(0xFF06c2bc);
+  static Color purple = Color(0xFF514bc3);
+  static Color green = Color(0x3b47b83b);
+  static Color dark_red = Color(0x3ba6343c);
+
+  static Color greyWithOpacity = "#3b9ea2a7".colorFromHex;
 
   static Color lightBackground = Color(0xFFeef0f6);
   static Color darkBackground = Color(0xFF0d1724);

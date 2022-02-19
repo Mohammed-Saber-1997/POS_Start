@@ -5,6 +5,7 @@ import 'package:pos_start/cache_helper.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
 import 'package:pos_start/cubit/app_states.dart';
 import 'package:pos_start/presentation/home/home_screen.dart';
+import 'package:pos_start/presentation/login/login_screen.dart';
 
 import 'app/app.dart';
 import 'cour/dependency_injection.dart' as di;
@@ -72,11 +73,10 @@ class MyApp extends StatelessWidget {
             ),
             darkTheme: ThemeData(
               scaffoldBackgroundColor: ColorManager.darkBackground2,
-              textTheme: TextTheme(),
             ),
             themeMode:
                 AppCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-            home: HomeScreen(),
+            home: LoginScreen(),
           );
         },
       ),
