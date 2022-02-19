@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
-import 'package:pos_start/presentation/src/color_manager.dart';
 import 'package:pos_start/presentation/widgets/default_button.dart';
 import 'package:pos_start/presentation/widgets/shared_widgets.dart';
+
+import '../src/src.dart';
 
 class bottomPart extends StatelessWidget {
   const bottomPart({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class bottomPart extends StatelessWidget {
           ? ColorManager.darkBackground
           : ColorManager.lightBackground,
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(AppPadding.p5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

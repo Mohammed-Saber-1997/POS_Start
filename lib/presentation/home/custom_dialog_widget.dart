@@ -76,7 +76,7 @@ class ShowCustomDialogg extends StatelessWidget {
                           size: 45,
                           color: ColorManager.orange,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         Expanded(
