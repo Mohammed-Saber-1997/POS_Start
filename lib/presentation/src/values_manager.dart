@@ -42,5 +42,5 @@ class DurationConstant {
   static const int ds2 = 2;
 }
 
-const EMPTY = "";
-const ZERO = 0;
+const String EMPTY = "";
+const num ZERO = 0;
