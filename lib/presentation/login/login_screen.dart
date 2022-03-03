@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pos_start/cubit/app_cubit.dart';
+import 'package:pos_start/cour/app_prefs.dart';
 import 'package:pos_start/presentation/home/home_screen.dart';
 import 'package:pos_start/presentation/login/numeric_keyboard.dart';
-import 'package:pos_start/presentation/src/color_manager.dart';
 import 'package:pos_start/presentation/src/src.dart';
+import 'package:pos_start/cour/di.dart' as di;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -18,6 +18,9 @@ class _HomePageState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: di.instance<AppPreferences>().getData(key: 'isDark')
+          ? ColorManager.darkBackground2
+          : ColorManager.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,27 +28,26 @@ class _HomePageState extends State<LoginScreen> {
             // display the entered numbers
             Text(
               'Enter a Personal Password  to login',
-              style: getSemiBoldStyle(
-                color: AppCubit.get(context).isDark
-                    ? ColorManager.white
-                    : ColorManager.black,
-                fontSize: 20,
-              ),
+              style: Theme.of(context).textTheme.headline2,
             ),
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: EdgeInsets.all(ResponsiveSize.w20),
               child: Container(
-                height: 70,
-                width: 400,
+                height: ResponsiveSize.w70,
+                width: ResponsiveSize.w400,
                 decoration: BoxDecoration(
-                  color: AppCubit.get(context).isDark
-                      ? Colors.white10
-                      : ColorManager.lightBackground,
+                  border: Border.all(
+                      color:
+                          di.instance<AppPreferences>().getData(key: 'isDark')
+                              ? ColorManager.grey
+                              : Colors.transparent,
+                      width: AppSize.s0_5),
+                  color: ColorManager.loginTextFieldColor,
                 ),
                 alignment: AlignmentDirectional.center,
                 child: Center(
                     child: TextField(
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.zero,
                     ),
@@ -55,28 +57,12 @@ class _HomePageState extends State<LoginScreen> {
                   controller: _myController,
                   textAlign: TextAlign.center,
                   showCursor: false,
-                  style: const TextStyle(fontSize: 40)
+                  style: TextStyle(fontSize: ResponsiveSize.w40)
                       .copyWith(color: Colors.grey),
                   keyboardType: TextInputType.none,
                 )),
               ),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(20),
-            //   child: Container(
-            //     color: ColorManager.lightBackground,
-            //     height: 70,
-            //     child: Center(
-            //         child: TextField(
-            //       controller: _myController,
-            //       textAlign: TextAlign.center,
-            //       showCursor: false,
-            //       style:
-            //           const TextStyle(fontSize: 40).copyWith(color: Colors.grey),
-            //       keyboardType: TextInputType.none,
-            //     )),
-            //   ),
-            // ),
             NumericKeyboard(
               buttonColor: Colors.indigo,
               iconColor: Colors.indigo,
@@ -87,12 +73,12 @@ class _HomePageState extends State<LoginScreen> {
               },
               // do something with the input numbers
               onSubmit: () {
-                if (_myController.text.length != 0) {
+                if (_myController.text.isNotEmpty) {
                   print(_myController.text);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HomeScreen(),
+                      builder: (context) => const HomeScreen(),
                     ),
                   );
                 }

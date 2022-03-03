@@ -1,7 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:pos_start/cour/dependency_injection.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pos_start/cour/di.dart';
+import 'package:pos_start/cubit/app_cubit.dart';
+import 'package:pos_start/cubit/app_states.dart';
 import 'package:pos_start/presentation/src/src.dart';
+import 'package:pos_start/cour/di.dart' as di;
+import 'package:pos_start/size_config.dart';
 
 import '../cour/app_prefs.dart';
 
@@ -20,25 +25,70 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final AppPreferences _appPreferences = instance<AppPreferences>();
+  final AppPreferences _appPreferences = di.instance<AppPreferences>();
 
   @override
   void didChangeDependencies() {
-    _appPreferences.getLocal().then((local) => {context.setLocale(local)});
+    // _appPreferences.getLocal().then((local) => {context.setLocale(local)});
 
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: RouteGenerator.getRoute,
-      initialRoute: Routes.splashRoute,
-      theme: getApplicationTheme(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => di.instance<AppCubit>()..changeAppThemeMode(),
+        ),
+      ],
+      child: BlocConsumer<AppCubit, AppStates>(
+        listener: (context, state) {
+          // print("isDark: ${_appPreferences.getData(key: 'isDark')}");
+        },
+        builder: (context, state) {
+          return LayoutBuilder(
+            builder: (context, constraints) {
+              return OrientationBuilder(
+                builder: (context, orientation) {
+                  SizeConfig().init(constraints, orientation);
+                  return MaterialApp(
+                    localizationsDelegates: context.localizationDelegates,
+                    supportedLocales: context.supportedLocales,
+                    locale: context.locale,
+                    debugShowCheckedModeBanner: false,
+                    onGenerateRoute: RouteGenerator.getRoute,
+                    initialRoute: Routes.loginRoute,
+                    theme: lightTheme,
+                    darkTheme: darkTheme,
+                    themeMode:
+                        di.instance<AppPreferences>().getData(key: 'isDark') ??
+                                false
+                            ? ThemeMode.dark
+                            : ThemeMode.light,
+                  );
+                },
+              );
+            },
+          );
+          // );
+          //   child: MaterialApp(
+          //     localizationsDelegates: context.localizationDelegates,
+          //     supportedLocales: context.supportedLocales,
+          //     locale: context.locale,
+          //     debugShowCheckedModeBanner: false,
+          //     onGenerateRoute: RouteGenerator.getRoute,
+          //     initialRoute: Routes.loginRoute,
+          //     theme: lightTheme,
+          //     darkTheme: darkTheme,
+          //     themeMode:
+          //         di.instance<AppPreferences>().getData(key: 'isDark') ?? false
+          //             ? ThemeMode.dark
+          //             : ThemeMode.light,
+          //   ),
+          // );
+        },
+      ),
     );
   }
 }

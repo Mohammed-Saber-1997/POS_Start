@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pos_start/cour/extensions.dart';
-import 'package:pos_start/cubit/app_cubit.dart';
 import 'package:pos_start/presentation/src/src.dart';
 
 class NumericKeyboard extends StatelessWidget {
@@ -23,7 +23,7 @@ class NumericKeyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 214,
+      width: ResponsiveSize.w214,
       child: Column(
         children: [
           Row(
@@ -83,7 +83,7 @@ class NumericKeyboard extends StatelessWidget {
               // this button is used to delete the last number
               IconButton(
                 onPressed: () => onDelete(),
-                iconSize: size - 4,
+                iconSize: ResponsiveSize.w52,
                 icon: Icon(
                   Icons.backspace,
                   color: iconColor,
@@ -117,7 +117,7 @@ class NumericKeyboard extends StatelessWidget {
   }
 }
 
-final double size = 60;
+double size = ResponsiveSize.w60;
 
 class NumberButton extends StatelessWidget {
   final int? number;
@@ -144,36 +144,38 @@ class NumberButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: EdgeInsets.all(ResponsiveSize.w5),
       child: Container(
         width: size,
         height: size,
         decoration: BoxDecoration(
-            color: iconBackGroundColor,
-            border: withoutBorder ?? false
-                ? null
-                : Border.all(
-                    color: AppCubit.get(context).isDark
-                        ? Colors.grey
-                        : Colors.black54,
-                    width: 2),
-            borderRadius: BorderRadius.circular(size / 2)),
+          color: iconBackGroundColor,
+          border: withoutBorder ?? false
+              ? null
+              : Border.all(
+                  color: ColorManager.loginNumbersColor, width: AppSize.s1_5),
+          borderRadius: BorderRadius.circular(size / 2),
+        ),
         child: Center(
           child: !withIcon
               ? Text(
                   number.toString(),
-                  style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      color: AppCubit.get(context).isDark
-                          ? Colors.grey
-                          : contentColor,
-                      fontSize: 30),
+                  style: Theme.of(context).textTheme.headline1!.copyWith(
+                        fontSize: ResponsiveSize.w30,
+                        color: ColorManager.loginNumbersColor,
+                      ),
                 )
-              : Icon(
-                  CupertinoIcons.arrowshape_turn_up_right_fill,
+              : SvgPicture.asset(
+                  'assets/images/sign-in-alt-solid.svg',
                   color: contentColor,
-                  size: size / 2,
+                  height: ResponsiveSize.w20,
+                  width: ResponsiveSize.w20,
                 ),
+          // : Icon(
+          //     CupertinoIcons.arrowShape_turn_up_right_fill,
+          //     color: contentColor,
+          //     size: size / 2,
+          //   ),
         ).onTap(() {
           if (withIcon && onClick.isNotNullObject) {
             onClick!();
@@ -199,7 +201,7 @@ class NumberButton extends StatelessWidget {
     //     child: Center(
     //       child: Text(
     //         number.toString(),
-    //         style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30),
+    //         style: const TextStyle(fontWeight: FontWeightManager.bold, color: Colors.white, fontSize: ResponsiveSize.w30),
     //       ),
     //     ),
     //   ),

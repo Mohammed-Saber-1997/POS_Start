@@ -1,28 +1,25 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:pos_start/cubit/app_cubit.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:pos_start/presentation/home/show_delete_dialog.dart';
+import 'package:pos_start/presentation/home/show_payment_dialog.dart';
+import 'package:pos_start/presentation/home/show_print_dialog.dart';
 import 'package:pos_start/presentation/widgets/default_button.dart';
 import 'package:pos_start/presentation/widgets/shared_widgets.dart';
+import 'package:pos_start/presentation/home/show_search_dialog.dart';
 
 import '../src/src.dart';
 
-class bottomPart extends StatelessWidget {
-  const bottomPart({Key? key}) : super(key: key);
+class BottomPart extends StatelessWidget {
+  const BottomPart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Color defaultTextColor =
-        AppCubit.get(context).isDark ? ColorManager.white : ColorManager.black;
-    Color defaultBackgroundColor =
-        AppCubit.get(context).isDark ? ColorManager.black : ColorManager.white;
-
     return Container(
-      height: 165,
-      color: AppCubit.get(context).isDark
-          ? ColorManager.darkBackground
-          : ColorManager.lightBackground,
+      height: ResponsiveSize.w165,
+      color: ColorManager.defaultSidePartsColor,
       child: Padding(
-        padding: const EdgeInsets.all(AppPadding.p5),
+        padding: EdgeInsets.all(ResponsiveSize.w5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -31,50 +28,53 @@ class bottomPart extends StatelessWidget {
                 Row(
                   children: [
                     myItem(
-                      fontColor: defaultTextColor,
-                      iconColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
                       name: 'Change Qty'.tr(),
+                      backgroundColor: ColorManager.blue,
+                      fontColor: ColorManager.white,
                     ),
                     myItem(
-                      fontColor: defaultTextColor,
-                      iconColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
                       name: 'Discount'.tr(),
-                      icon: CupertinoIcons.percent,
-                      // icon: MyFlutterApp.percentage_solid,
+                      icon: SvgPicture.asset(
+                        'assets/images/percentage-solid.svg',
+                        color: ColorManager.defaultTextColor,
+                        height: ResponsiveSize.w25,
+                        width: ResponsiveSize.w25,
+                      ),
                     ),
                     myItem(
-                      fontColor: defaultTextColor,
-                      iconColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
                       name: 'Price Chick'.tr(),
-                      icon: CupertinoIcons.barcode,
+                      icon: SvgPicture.asset(
+                        'assets/images/barcode-solid.svg',
+                        color: ColorManager.defaultTextColor,
+                        height: ResponsiveSize.w25,
+                        width: ResponsiveSize.w25,
+                      ),
                     ),
                     myItem(
-                      fontColor: defaultTextColor,
-                      iconColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
                       name: 'Repeat Last Item'.tr(),
-                      icon: CupertinoIcons.arrow_2_circlepath,
-                      width: 120,
+                      width: ResponsiveSize.w100,
+                      icon: SvgPicture.asset(
+                        'assets/images/sync-alt-solid.svg',
+                        color: ColorManager.defaultTextColor,
+                        height: ResponsiveSize.w25,
+                        width: ResponsiveSize.w25,
+                      ),
                     ),
                     myItem(
-                      fontColor: defaultTextColor,
-                      iconColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
                       name: 'Search'.tr(),
-                      icon: CupertinoIcons.search,
-                      function: () => AppCubit.get(context).showSearchDialog(
+                      icon: SvgPicture.asset(
+                        'assets/images/search-solid.svg',
+                        color: ColorManager.defaultTextColor,
+                        height: ResponsiveSize.w25,
+                        width: ResponsiveSize.w25,
+                      ),
+                      function: () => ShowSearchDialog().showSearchDialog(
                         context,
                         title: 'Item Search',
                         body: 'Item Search',
                       ),
                     ),
                     myItem(
-                      fontColor: defaultTextColor,
-                      iconColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
                       name: 'Open Drawer'.tr(),
                     ),
                   ],
@@ -82,16 +82,22 @@ class bottomPart extends StatelessWidget {
                 Row(
                   children: [
                     myItem(
-                      fontColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
+                      // SvgPicture.asset(
+                      //   'assets/images/cancel.svg',
+                      //   color: Colors.red,
+                      // )
+
                       isRectangle: true,
                       borderColor: ColorManager.red,
                       name: 'Delete all Items'.tr(),
-                      icon: CupertinoIcons.clear_thick,
-                      iconColor: ColorManager.red,
-                      height: 55,
-                      width: 150,
-                      function: () => AppCubit.get(context).showCustomDialog(
+                      icon: SvgPicture.asset(
+                        'assets/images/times-solid.svg',
+                        color: ColorManager.red,
+                        height: ResponsiveSize.w25,
+                        width: ResponsiveSize.w25,
+                      ),
+                      width: ResponsiveSize.w150,
+                      function: () => ShowDeleteDialog().showDeleteDialog(
                         context,
                         title: 'Delete All Items',
                         body:
@@ -99,16 +105,17 @@ class bottomPart extends StatelessWidget {
                       ),
                     ),
                     myItem(
-                      fontColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
                       isRectangle: true,
                       borderColor: ColorManager.orange,
                       name: 'Delete Selected Item'.tr(),
-                      icon: CupertinoIcons.clear_thick,
-                      iconColor: ColorManager.orange,
-                      height: 55,
-                      width: 170,
-                      function: () => AppCubit.get(context).showCustomDialog(
+                      icon: SvgPicture.asset(
+                        'assets/images/times-solid.svg',
+                        color: ColorManager.orange,
+                        height: ResponsiveSize.w25,
+                        width: ResponsiveSize.w25,
+                      ),
+                      width: ResponsiveSize.w170,
+                      function: () => ShowDeleteDialog().showDeleteDialog(
                         context,
                         title: 'Delete Item',
                         body:
@@ -116,31 +123,32 @@ class bottomPart extends StatelessWidget {
                       ),
                     ),
                     myItem(
-                      fontColor: defaultTextColor,
-                      iconColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
                       isRectangle: true,
                       name: 'Clear Input'.tr(),
-                      icon: CupertinoIcons.delete,
-                      height: 55,
-                      width: 120,
+                      icon: SvgPicture.asset(
+                        'assets/images/broom-solid.svg',
+                        color: ColorManager.defaultTextColor,
+                        height: ResponsiveSize.w28,
+                        width: ResponsiveSize.w28,
+                      ),
+                      width: ResponsiveSize.w120,
                     ),
                     myItem(
-                      fontColor: defaultTextColor,
-                      iconColor: defaultTextColor,
-                      backgroundColor: defaultBackgroundColor,
                       isRectangle: true,
                       name: 'Lock'.tr(),
-                      icon: CupertinoIcons.lock_fill,
-                      height: 55,
-                      // width: 90,
+                      icon: SvgPicture.asset(
+                        'assets/images/lock-solid.svg',
+                        color: ColorManager.defaultTextColor,
+                        height: ResponsiveSize.w25,
+                        width: ResponsiveSize.w25,
+                      ),
                     ),
                   ],
                 ),
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
+              padding: EdgeInsets.symmetric(horizontal: ResponsiveSize.w5),
               child: myVerticalDivider(),
             ),
             Column(
@@ -150,37 +158,47 @@ class bottomPart extends StatelessWidget {
                     Column(
                       children: [
                         myItem(
-                          backgroundColor: defaultTextColor,
-                          fontColor: defaultBackgroundColor,
-                          iconColor: defaultBackgroundColor,
+                          backgroundColor: ColorManager.defaultTextColor,
+                          fontColor: ColorManager.reversedTextColor,
+                          iconColor: ColorManager.reversedTextColor,
                           name: 'CASH',
-                          height: 40,
-                          width: 60,
-                          function: () => AppCubit.get(context).showPrintDialog(
+                          // icon: SvgPicture.asset(
+                          //   'assets/images/CASH.svg',
+                          //   color: ColorManager.reversedTextColor,
+                          //   height: ResponsiveSize.w25,
+                          //   width: ResponsiveSize.w25,
+                          // ),
+                          height: ResponsiveSize.w40,
+                          width: ResponsiveSize.w60,
+                          function: () => ShowPrintDialog().showPrintDialog(
                             context,
                             title: 'Print',
                             body: 'Print',
                           ),
                         ),
                         myItem(
-                          backgroundColor: defaultTextColor,
-                          fontColor: defaultBackgroundColor,
-                          iconColor: defaultBackgroundColor,
+                          backgroundColor: ColorManager.defaultTextColor,
+                          fontColor: ColorManager.reversedTextColor,
+                          iconColor: ColorManager.reversedTextColor,
                           name: 'K_NET',
-                          height: 40,
-                          width: 60,
+                          height: ResponsiveSize.w40,
+                          width: ResponsiveSize.w60,
                         ),
                       ],
                     ),
                     myItem(
-                      backgroundColor: defaultTextColor,
-                      fontColor: defaultBackgroundColor,
-                      iconColor: defaultBackgroundColor,
+                      backgroundColor: ColorManager.defaultTextColor,
+                      fontColor: ColorManager.reversedTextColor,
                       name: 'Multiple Payment',
-                      icon: CupertinoIcons.money_dollar_circle,
-                      height: 90,
-                      width: 120,
-                      function: () => AppCubit.get(context).showPaymentDialog(
+                      icon: SvgPicture.asset(
+                        'assets/images/credit-card-regular.svg',
+                        color: ColorManager.reversedTextColor,
+                        height: ResponsiveSize.w25,
+                        width: ResponsiveSize.w25,
+                      ),
+                      height: ResponsiveSize.w90,
+                      width: ResponsiveSize.w120,
+                      function: () => ShowPaymentDialog().showPaymentDialog(
                         context,
                         title: 'Payment',
                         body: 'Payment',
@@ -189,15 +207,17 @@ class bottomPart extends StatelessWidget {
                   ],
                 ),
                 myItem(
-                  fontColor: defaultTextColor,
-                  iconColor: defaultTextColor,
-                  backgroundColor: defaultBackgroundColor,
                   isRectangle: true,
                   isSearchBox: true,
                   name: 'Refund',
-                  icon: CupertinoIcons.arrow_2_squarepath,
-                  height: 45,
-                  width: 190,
+                  icon: SvgPicture.asset(
+                    'assets/images/retweet-solid.svg',
+                    color: ColorManager.defaultTextColor,
+                    height: ResponsiveSize.w25,
+                    width: ResponsiveSize.w25,
+                  ),
+                  height: ResponsiveSize.w45,
+                  width: ResponsiveSize.w190,
                 ),
               ],
             ),

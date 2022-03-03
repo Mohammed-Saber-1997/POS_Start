@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:pos_start/cubit/app_cubit.dart';
 import 'package:pos_start/data/datasources/local_data_source.dart';
 import 'package:pos_start/data/datasources/remote_data_source.dart';
 import 'package:pos_start/data/repositories/repository_implementation.dart';
@@ -14,14 +15,9 @@ final instance = GetIt.instance;
 
 Future<void> init() async {
   /// Features ->
-  // Bloc
-  // sl.registerFactory(
-  //       () => AnyBloc(
-  //     concrete: instance(),
-  //     inputConverter: instance(),
-  //     random: instance(),
-  //   ),
-  // );
+  instance.registerFactory<AppCubit>(
+    () => AppCubit(appPreferences: instance<AppPreferences>()),
+  );
 
   /// Use cases
 

@@ -22,6 +22,11 @@ dependencies:
   equatable: ^2.0.3
   dartz: ^0.10.1
 
+  bloc: ^8.0.3
+  flutter_bloc: ^8.0.1
+
+  flutter_svg: ^1.0.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -41,6 +46,7 @@ flutter:
 
   assets:
     - assets/translations/
+    - assets/images/
 
 
   fonts:

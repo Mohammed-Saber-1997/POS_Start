@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pos_start/presentation/src/src.dart';
 
 class myItem extends StatelessWidget {
@@ -6,7 +7,7 @@ class myItem extends StatelessWidget {
 
   final dynamic function;
   final String? name;
-  final IconData? icon;
+  final SvgPicture? icon;
   final double? height;
   final double? width;
   final bool? isRectangle;
@@ -15,6 +16,7 @@ class myItem extends StatelessWidget {
   final Color? borderColor;
   final Color? backgroundColor;
   final Color? fontColor;
+  final double? fontSize;
 
   myItem({
     this.function,
@@ -28,88 +30,81 @@ class myItem extends StatelessWidget {
     this.borderColor,
     this.backgroundColor,
     this.fontColor,
+    this.fontSize,
   });
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: function ?? () => print(name),
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: EdgeInsets.all(ResponsiveSize.w5),
         child: Container(
-          height: height ?? 80,
-          width: width ?? 80,
+          height: isRectangle ?? false
+              ? height ?? ResponsiveSize.w55
+              : height ?? ResponsiveSize.w80,
+          width: width ?? ResponsiveSize.w80,
           decoration: BoxDecoration(
-            color: borderColor ?? const Color(0xFF9ea2a7),
-            borderRadius: BorderRadius.circular((10)),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(0.5),
-            child: Container(
-              decoration: BoxDecoration(
-                color: backgroundColor ?? const Color(0xFFfafafa),
-                borderRadius: BorderRadius.circular((10)),
-              ),
-              alignment: AlignmentDirectional.center,
-              child: isRectangle ?? false
-                  ? Row(
-                      mainAxisAlignment: isSearchBox ?? false
-                          ? MainAxisAlignment.start
-                          : MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: isSearchBox ?? false
-                              ? const EdgeInsets.symmetric(horizontal: 15.0)
-                              : null,
-                          child: icon != null
-                              ? Icon(
-                                  icon,
-                                  size: 28,
-                                  color: iconColor,
-                                )
-                              : null,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          child: name != null
-                              ? Text(name!,
-                                  style: getBoldStyle(
-                                    color: fontColor ?? Colors.black,
-                                    fontSize: 12,
-                                  ))
-                              : null,
-                        ),
-                      ],
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: icon != null
-                              ? Icon(
-                                  icon,
-                                  size: 28,
-                                  color: iconColor,
-                                )
-                              : null,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                          child: name != null
-                              ? Text(name!,
-                                  style: getBoldStyle(
-                                    color: fontColor ?? Colors.black,
-                                    fontSize: 12,
-                                  ))
-                              : null,
-                        ),
-                      ],
-                    ),
+            color: backgroundColor ?? ColorManager.defaultBackgroundColor,
+            borderRadius: BorderRadius.circular((AppSize.s10)),
+            border: Border.all(
+              color: borderColor ?? const Color(0xFF9ea2a7),
+              width: AppSize.s0_5,
             ),
           ),
+          alignment: AlignmentDirectional.center,
+          child: isRectangle ?? false
+              ? Row(
+                  mainAxisAlignment: isSearchBox ?? false
+                      ? MainAxisAlignment.start
+                      : MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: isSearchBox ?? false
+                          ? EdgeInsets.symmetric(horizontal: ResponsiveSize.w15)
+                          : null,
+                      child: icon,
+                    ),
+                    SizedBox(
+                      width: ResponsiveSize.w10,
+                    ),
+                    Container(
+                      child: name != null
+                          ? Text(
+                              name!,
+                              style: getBoldStyle(
+                                color:
+                                    fontColor ?? ColorManager.defaultTextColor,
+                                fontSize: fontSize ?? ResponsiveSize.w12,
+                              ),
+                            )
+                          : null,
+                    ),
+                  ],
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      child: icon,
+                    ),
+                    SizedBox(
+                      height: ResponsiveSize.w5,
+                    ),
+                    Container(
+                      child: name != null
+                          ? Text(
+                              name!,
+                              style: getBoldStyle(
+                                color:
+                                    fontColor ?? ColorManager.defaultTextColor,
+                                fontSize: fontSize ?? ResponsiveSize.w12,
+                              ),
+                            )
+                          : null,
+                    ),
+                  ],
+                ),
         ),
       ),
     );

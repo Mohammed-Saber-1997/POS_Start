@@ -1,99 +1,132 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:pos_start/cour/app_prefs.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
+import 'package:pos_start/presentation/home/show_search_dialog.dart';
+import 'package:pos_start/presentation/home/show_settings_dialog.dart';
 import 'package:pos_start/presentation/src/src.dart';
 import 'package:pos_start/presentation/widgets/default_button.dart';
-import 'package:pos_start/presentation/widgets/shared_widgets.dart';
+import 'package:pos_start/cour/di.dart' as di;
 
-class topPart extends StatelessWidget {
-  const topPart({Key? key}) : super(key: key);
+class TopPart extends StatelessWidget {
+  const TopPart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Color defaultTextColor =
-        AppCubit.get(context).isDark ? ColorManager.white : ColorManager.black;
-    Color defaultBackgroundColor =
-        AppCubit.get(context).isDark ? ColorManager.black : ColorManager.white;
-
     return Container(
       color: ColorManager.grey,
       child: Padding(
-        padding: const EdgeInsets.all(0.5),
+        padding: EdgeInsets.all(ResponsiveSize.w0_5),
         child: Container(
-          height: 70,
-          color: AppCubit.get(context).isDark
-              ? ColorManager.darkBackground
-              : ColorManager.lightBackground,
+          height: ResponsiveSize.w70,
+          color: ColorManager.defaultSidePartsColor,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 6.0),
+            padding: EdgeInsets.symmetric(horizontal: ResponsiveSize.w6),
             child: Row(
               children: [
                 myItem(
-                  backgroundColor: defaultBackgroundColor,
+                  backgroundColor: ColorManager.greyWithOpacity,
+                  borderColor: Colors.transparent,
                   isRectangle: true,
                   isSearchBox: true,
-                  borderColor: ColorManager.white,
+                  // borderColor: ColorManager.white,
                   fontColor: ColorManager.grey,
-                  name: 'Search...'.tr(),
-                  icon: CupertinoIcons.search,
-                  iconColor: ColorManager.grey,
-                  height: 50,
-                  width: 400,
-                  function: () => AppCubit.get(context).showSearchDialog(
+                  name: 'Search ...'.tr(),
+                  fontSize: ResponsiveSize.w16,
+                  icon: SvgPicture.asset(
+                    'assets/images/search-solid 2.svg',
+                    color: ColorManager.grey,
+                    height: ResponsiveSize.w25,
+                    width: ResponsiveSize.w25,
+                  ),
+                  height: ResponsiveSize.w50,
+                  width: ResponsiveSize.w400,
+                  function: () => ShowSearchDialog().showSearchDialog(
                     context,
                     title: 'Item Search',
                     body: 'Item Search',
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 myItem(
-                  backgroundColor: defaultBackgroundColor,
-                  borderColor: ColorManager.white,
-                  icon: CupertinoIcons.wifi,
+                  backgroundColor: ColorManager.greyWithOpacity,
+                  borderColor: Colors.transparent,
+                  icon: SvgPicture.asset(
+                    'assets/images/wifi-solid.svg',
+                    color: ColorManager.orange,
+                    height: ResponsiveSize.w25,
+                    width: ResponsiveSize.w25,
+                  ),
                   iconColor: ColorManager.orange,
-                  height: 50,
-                  width: 50,
+                  height: ResponsiveSize.w50,
+                  width: ResponsiveSize.w50,
                 ),
                 myItem(
-                  backgroundColor: defaultBackgroundColor,
-                  borderColor: ColorManager.white,
-                  icon: CupertinoIcons.settings,
-                  iconColor: ColorManager.grey,
-                  height: 50,
-                  width: 50,
-                  function: () => AppCubit.get(context).showSettingsDialog(
+                  backgroundColor: ColorManager.greyWithOpacity,
+                  borderColor: Colors.transparent,
+                  icon: SvgPicture.asset(
+                    'assets/images/cogs-solid.svg',
+                    color: ColorManager.grey,
+                    height: ResponsiveSize.w25,
+                    width: ResponsiveSize.w25,
+                  ),
+                  height: ResponsiveSize.w50,
+                  width: ResponsiveSize.w50,
+                  function: () => ShowSettingsDialog().showSettingsDialog(
                     context,
                     title: 'Settings',
                     body: 'Settings',
                   ),
                 ),
                 myItem(
-                  fontColor: defaultTextColor,
-                  backgroundColor: defaultBackgroundColor,
+                  backgroundColor: ColorManager.greyWithOpacity,
                   isRectangle: true,
-                  borderColor: ColorManager.white,
+                  borderColor: Colors.transparent,
                   name: 'Lock'.tr(),
-                  icon: CupertinoIcons.lock_fill,
-                  iconColor: ColorManager.grey,
-                  height: 50,
-                  // width: 90,
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.only(end: 8.0),
-                  child: TextButton(
-                    onPressed: () {
-                      AppCubit.get(context).changeAppThemeMode();
-                    },
-                    child: Text(
-                      AppCubit.get(context).isDark ? 'Light' : 'Dark',
-                      style:
-                          getBoldStyle(fontSize: 18, color: defaultTextColor),
-                    ),
+                  icon: SvgPicture.asset(
+                    'assets/images/lock-solid.svg',
+                    color: ColorManager.grey,
+                    height: ResponsiveSize.w25,
+                    width: ResponsiveSize.w25,
                   ),
+                  height: ResponsiveSize.w50,
                 ),
+                myItem(
+                  backgroundColor: ColorManager.greyWithOpacity,
+                  borderColor: ColorManager.white,
+                  icon: SvgPicture.asset(
+                    'assets/images/lock-solid.svg',
+                    color: ColorManager.defaultTextColor,
+                    height: ResponsiveSize.w25,
+                    width: ResponsiveSize.w25,
+                  ),
+                  height: ResponsiveSize.w50,
+                  width: ResponsiveSize.w50,
+                  function: () {
+                    AppCubit.get(context).changeAppThemeMode();
+                  },
+                ),
+                // Padding(
+                //   padding: const EdgeInsetsDirectional.only(end: ResponsiveSize.w8),
+                //   child: TextButton(
+                //     onPressed: () {
+                //       AppCubit.get(context).changeAppThemeMode();
+                //     },
+                //     child: Text(
+                //       di.instance<AppPreferences>().getData(key: 'isDark')
+                //           ? 'Light'
+                //           : 'Dark',
+                //       style: Theme.of(context).textTheme.headline3!.copyWith(
+                //             fontSize: ResponsiveSize.w18,
+                //             color: ColorManager.defaultTextColor,
+                //           ),
+                //     ),
+                //   ),
+                // ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.only(end: 8.0),
+                  padding: EdgeInsetsDirectional.only(end: ResponsiveSize.w8),
                   child: TextButton(
                     onPressed: () async {
                       if (context.locale.languageCode == "en") {
@@ -104,8 +137,10 @@ class topPart extends StatelessWidget {
                     },
                     child: Text(
                       context.locale.languageCode == "ar" ? 'English' : 'عربي',
-                      style:
-                          getBoldStyle(fontSize: 18, color: defaultTextColor),
+                      style: Theme.of(context).textTheme.headline3!.copyWith(
+                            fontSize: ResponsiveSize.w18,
+                            color: ColorManager.defaultTextColor,
+                          ),
                     ),
                   ),
                 ),

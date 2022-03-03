@@ -13,16 +13,16 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          leftPart(),
+          const LeftPart(),
           myVerticalDivider(),
           Expanded(
             flex: 3,
             child: Column(
               children: [
-                topPart(),
-                mainPart(),
+                const TopPart(),
+                const MainPart(),
                 myHorizontalDivider(),
-                bottomPart(),
+                const BottomPart(),
               ],
             ),
           ),
