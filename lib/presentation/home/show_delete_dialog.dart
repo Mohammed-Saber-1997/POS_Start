@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pos_start/cubit/app_cubit.dart';
+import 'package:pos_start/cour/app_prefs.dart';
 import 'package:pos_start/presentation/src/src.dart';
 
 class ShowDeleteDialog {
@@ -10,9 +10,8 @@ class ShowDeleteDialog {
     required String title,
     required String body,
   }) {
-    Color defaultBackgroundColor = AppCubit.get(context).isDark
-        ? ColorManager.black
-        : ColorManager.lightBackground;
+    Color defaultBackgroundColor =
+        isDarkMode ? ColorManager.black : ColorManager.lightBackground;
 
     showDialog(
       context: context,

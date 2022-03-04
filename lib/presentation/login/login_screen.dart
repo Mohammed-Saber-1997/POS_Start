@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pos_start/cour/app_prefs.dart';
-import 'package:pos_start/presentation/home/home_screen.dart';
 import 'package:pos_start/presentation/login/numeric_keyboard.dart';
 import 'package:pos_start/presentation/src/src.dart';
-import 'package:pos_start/cour/di.dart' as di;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -18,9 +16,8 @@ class _HomePageState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: di.instance<AppPreferences>().getData(key: 'isDark')
-          ? ColorManager.darkBackground2
-          : ColorManager.white,
+      backgroundColor:
+          isDarkMode ? ColorManager.darkBackground2 : ColorManager.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -38,9 +35,7 @@ class _HomePageState extends State<LoginScreen> {
                 decoration: BoxDecoration(
                   border: Border.all(
                       color:
-                          di.instance<AppPreferences>().getData(key: 'isDark')
-                              ? ColorManager.grey
-                              : Colors.transparent,
+                          isDarkMode ? ColorManager.grey : Colors.transparent,
                       width: AppSize.s0_5),
                   color: ColorManager.loginTextFieldColor,
                 ),
@@ -75,12 +70,7 @@ class _HomePageState extends State<LoginScreen> {
               onSubmit: () {
                 if (_myController.text.isNotEmpty) {
                   print(_myController.text);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
-                    ),
-                  );
+                  Navigator.pushNamed(context, Routes.homeRoute);
                 }
               },
             ),

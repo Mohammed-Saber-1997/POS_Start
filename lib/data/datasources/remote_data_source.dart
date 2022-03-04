@@ -1,5 +1,6 @@
 abstract class RemoteDataSource {
   //Future<AuthenticationResponse> login(LoginRequest loginRequest);
+  //Future<String> getServerDateTime();
 }
 
 class RemoteDataSourceImplementation implements RemoteDataSource {

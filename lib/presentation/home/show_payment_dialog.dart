@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pos_start/cubit/app_cubit.dart';
+import 'package:pos_start/cour/app_prefs.dart';
 import 'package:pos_start/presentation/src/src.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:pos_start/presentation/widgets/default_button.dart';
@@ -12,8 +12,8 @@ class ShowPaymentDialog {
     required String body,
   }) {
     Color defaultTextColor =
-        AppCubit.get(context).isDark ? ColorManager.white : ColorManager.black;
-    Color defaultBackgroundColor = AppCubit.get(context).isDark
+        isDarkMode ? ColorManager.white : ColorManager.black;
+    Color defaultBackgroundColor = isDarkMode
         ? ColorManager.darkBackground2
         : ColorManager.lightBackground;
 
@@ -89,7 +89,7 @@ class ShowPaymentDialog {
                                       ),
                                 ),
                               ),
-                              myItem(
+                              MyItem(
                                 backgroundColor: ColorManager.greyWithOpacity,
                                 borderColor: Colors.transparent,
                                 height: ResponsiveSize.w40,
@@ -117,7 +117,7 @@ class ShowPaymentDialog {
                                       ),
                                 ),
                               ),
-                              myItem(
+                              MyItem(
                                 backgroundColor: ColorManager.greyWithOpacity,
                                 borderColor: Colors.transparent,
                                 height: ResponsiveSize.w40,
@@ -145,7 +145,7 @@ class ShowPaymentDialog {
                                       ),
                                 ),
                               ),
-                              myItem(
+                              MyItem(
                                 backgroundColor: ColorManager.greyWithOpacity,
                                 borderColor: Colors.transparent,
                                 height: ResponsiveSize.w40,
@@ -168,7 +168,7 @@ class ShowPaymentDialog {
                                   color: ColorManager.grey,
                                   width: ResponsiveSize.w0_5,
                                 ),
-                                color: AppCubit.get(context).isDark
+                                color: isDarkMode
                                     ? ColorManager.darkBackground2
                                     : ColorManager.lightBackground,
                               ),
@@ -195,7 +195,7 @@ class ShowPaymentDialog {
                               children: [
                                 Row(
                                   children: [
-                                    myItem(
+                                    MyItem(
                                       name: 'Visa',
                                       backgroundColor:
                                           ColorManager.greyWithOpacity,
@@ -208,7 +208,7 @@ class ShowPaymentDialog {
                                     SizedBox(
                                       width: ResponsiveSize.w5,
                                     ),
-                                    myItem(
+                                    MyItem(
                                       name: 'Cash',
                                       backgroundColor:
                                           ColorManager.greyWithOpacity,
@@ -225,7 +225,7 @@ class ShowPaymentDialog {
                                 ),
                                 Row(
                                   children: [
-                                    myItem(
+                                    MyItem(
                                       name: 'K - Net',
                                       backgroundColor:
                                           ColorManager.greyWithOpacity,
@@ -238,7 +238,7 @@ class ShowPaymentDialog {
                                     SizedBox(
                                       width: ResponsiveSize.w5,
                                     ),
-                                    myItem(
+                                    MyItem(
                                       name: 'Master',
                                       backgroundColor:
                                           ColorManager.greyWithOpacity,
@@ -255,7 +255,7 @@ class ShowPaymentDialog {
                                 ),
                                 Row(
                                   children: [
-                                    myItem(
+                                    MyItem(
                                       name: 'Return',
                                       backgroundColor:
                                           ColorManager.greyWithOpacity,
@@ -268,7 +268,7 @@ class ShowPaymentDialog {
                                     SizedBox(
                                       width: ResponsiveSize.w5,
                                     ),
-                                    myItem(
+                                    MyItem(
                                       name: 'Coupon',
                                       backgroundColor:
                                           ColorManager.greyWithOpacity,
@@ -285,7 +285,7 @@ class ShowPaymentDialog {
                                 ),
                                 Row(
                                   children: [
-                                    myItem(
+                                    MyItem(
                                       name: 'Delivery',
                                       backgroundColor:
                                           ColorManager.greyWithOpacity,
@@ -298,7 +298,7 @@ class ShowPaymentDialog {
                                     SizedBox(
                                       width: ResponsiveSize.w5,
                                     ),
-                                    myItem(
+                                    MyItem(
                                       name: 'Marketing',
                                       backgroundColor:
                                           ColorManager.greyWithOpacity,

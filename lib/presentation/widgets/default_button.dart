@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pos_start/presentation/src/src.dart';
 
-class myItem extends StatelessWidget {
-  //const DefaultButton({ Key? key }) : super(key: key);
+class MyItem extends StatelessWidget {
+  //const myItem({ Key? key }) : super(key: key);
 
   final dynamic function;
   final String? name;
@@ -18,7 +18,8 @@ class myItem extends StatelessWidget {
   final Color? fontColor;
   final double? fontSize;
 
-  myItem({
+  const MyItem({
+    Key? key,
     this.function,
     this.name,
     this.icon,
@@ -31,7 +32,7 @@ class myItem extends StatelessWidget {
     this.backgroundColor,
     this.fontColor,
     this.fontSize,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

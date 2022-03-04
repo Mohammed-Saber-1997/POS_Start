@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../../cour/app_prefs.dart';
-import 'package:pos_start/cour/di.dart' as di;
 
 class ColorManager {
   // Dark Colors
@@ -26,32 +24,20 @@ class ColorManager {
   static Color greyWithOpacity = "#3b9ea2a7".colorFromHex;
 
   // App Default Colors
-  static Color defaultTextColor =
-      di.instance<AppPreferences>().getData(key: 'isDark') ? white : black;
-  static Color reversedTextColor =
-      di.instance<AppPreferences>().getData(key: 'isDark') ? black : white;
-  static Color defaultSidePartsColor =
-      di.instance<AppPreferences>().getData(key: 'isDark')
-          ? darkBackground
-          : lightBackground;
-  static Color defaultBackgroundColor =
-      di.instance<AppPreferences>().getData(key: 'isDark')
-          ? darkBackground2
-          : lightBackground;
-  static Color reversedBackgroundColor =
-      di.instance<AppPreferences>().getData(key: 'isDark')
-          ? ColorManager.lightBackground
-          : ColorManager.darkBackground2;
+  static Color get defaultTextColor => isDarkMode ? white : black;
+  static Color get reversedTextColor => isDarkMode ? black : white;
+  static Color get defaultSidePartsColor =>
+      isDarkMode ? darkBackground : lightBackground;
+  static Color get defaultBackgroundColor =>
+      isDarkMode ? darkBackground2 : lightBackground;
+  static Color get reversedBackgroundColor =>
+      isDarkMode ? ColorManager.lightBackground : ColorManager.darkBackground2;
 
   // Login Colors
-  static Color loginTextFieldColor =
-      di.instance<AppPreferences>().getData(key: 'isDark')
-          ? Colors.white10
-          : ColorManager.lightBackground;
-  static Color loginNumbersColor =
-      di.instance<AppPreferences>().getData(key: 'isDark')
-          ? Colors.grey
-          : Colors.black54;
+  static Color get loginTextFieldColor =>
+      isDarkMode ? Colors.white10 : ColorManager.lightBackground;
+  static Color get loginNumbersColor =>
+      isDarkMode ? Colors.grey : Colors.black54;
 }
 
 extension HexColor on Color {

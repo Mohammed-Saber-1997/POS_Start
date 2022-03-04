@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pos_start/cour/di.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
 import 'package:pos_start/cubit/app_states.dart';
 import 'package:pos_start/presentation/src/src.dart';
@@ -39,7 +38,9 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => di.instance<AppCubit>()..changeAppThemeMode(),
+          create: (context) => di.instance<AppCubit>()
+            ..getInitUIMode()
+            ..changeTime(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(
@@ -61,32 +62,12 @@ class _MyAppState extends State<MyApp> {
                     initialRoute: Routes.loginRoute,
                     theme: lightTheme,
                     darkTheme: darkTheme,
-                    themeMode:
-                        di.instance<AppPreferences>().getData(key: 'isDark') ??
-                                false
-                            ? ThemeMode.dark
-                            : ThemeMode.light,
+                    themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
                   );
                 },
               );
             },
           );
-          // );
-          //   child: MaterialApp(
-          //     localizationsDelegates: context.localizationDelegates,
-          //     supportedLocales: context.supportedLocales,
-          //     locale: context.locale,
-          //     debugShowCheckedModeBanner: false,
-          //     onGenerateRoute: RouteGenerator.getRoute,
-          //     initialRoute: Routes.loginRoute,
-          //     theme: lightTheme,
-          //     darkTheme: darkTheme,
-          //     themeMode:
-          //         di.instance<AppPreferences>().getData(key: 'isDark') ?? false
-          //             ? ThemeMode.dark
-          //             : ThemeMode.light,
-          //   ),
-          // );
         },
       ),
     );

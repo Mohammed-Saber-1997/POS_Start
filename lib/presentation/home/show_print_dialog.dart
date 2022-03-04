@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pos_start/cubit/app_cubit.dart';
+import 'package:pos_start/cour/app_prefs.dart';
 import 'package:pos_start/presentation/src/src.dart';
 import 'package:pos_start/presentation/widgets/default_button.dart';
 import 'package:pos_start/presentation/widgets/shared_widgets.dart';
@@ -12,7 +12,7 @@ class ShowPrintDialog {
     required String title,
     required String body,
   }) {
-    Color defaultBackgroundColor = AppCubit.get(context).isDark
+    Color defaultBackgroundColor = isDarkMode
         ? ColorManager.darkBackground2
         : ColorManager.lightBackground;
 
@@ -88,7 +88,7 @@ class ShowPrintDialog {
                                       ),
                                 ),
                               ),
-                              myItem(
+                              MyItem(
                                 name: '12.000',
                                 fontColor: ColorManager.white,
                                 backgroundColor: ColorManager.greyWithOpacity,
@@ -119,7 +119,7 @@ class ShowPrintDialog {
                                       ),
                                 ),
                               ),
-                              myItem(
+                              MyItem(
                                 name: '12.000',
                                 fontColor: ColorManager.white,
                                 backgroundColor: ColorManager.darkRed,
@@ -150,7 +150,7 @@ class ShowPrintDialog {
                                       ),
                                 ),
                               ),
-                              myItem(
+                              MyItem(
                                 name: '12.000',
                                 fontColor: ColorManager.white,
                                 backgroundColor: ColorManager.greyWithOpacity,
@@ -181,7 +181,7 @@ class ShowPrintDialog {
                                       ),
                                 ),
                               ),
-                              myItem(
+                              MyItem(
                                 name: '12.000',
                                 fontColor: ColorManager.white,
                                 backgroundColor: ColorManager.greyWithOpacity,
@@ -212,7 +212,7 @@ class ShowPrintDialog {
                                       ),
                                 ),
                               ),
-                              myItem(
+                              MyItem(
                                 name: '12.000',
                                 fontColor: ColorManager.white,
                                 backgroundColor: ColorManager.green,
@@ -234,7 +234,7 @@ class ShowPrintDialog {
                         height: ResponsiveSize.w60,
                         width: ResponsiveSize.w200,
                         decoration: BoxDecoration(
-                          color: AppCubit.get(context).isDark
+                          color: isDarkMode
                               ? ColorManager.darkBackground2
                               : ColorManager.lightBackground,
                           borderRadius: BorderRadius.circular(AppSize.s10),

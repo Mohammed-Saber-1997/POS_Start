@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:pos_start/presentation/src/src.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// bool isDarkMode = false;
+bool isDarkMode = false;
 
 const String prefsKeyLang = "PREFS_KEY_LANG";
+const String prefsKeyUiMode = "ui_mode";
 
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
@@ -45,20 +46,14 @@ class AppPreferences {
     }
   }
 
-  dynamic getData({
-    required String key,
-  }) {
-    return _sharedPreferences.get(key);
+  Future<bool> setUIMode() async {
+    bool uiMode = await getUIMode();
+    isDarkMode = !uiMode;
+    return await _sharedPreferences.setBool(prefsKeyUiMode, !uiMode);
   }
 
-  Future<bool?> saveData({
-    required String key,
-    required dynamic value,
-  }) async {
-    if (value is int) return await _sharedPreferences.setInt(key, value);
-    if (value is double) return await _sharedPreferences.setDouble(key, value);
-    if (value is bool) return await _sharedPreferences.setBool(key, value);
-
-    return await _sharedPreferences.setString(key, value);
+  Future<bool> getUIMode() async {
+    isDarkMode = _sharedPreferences.getBool(prefsKeyUiMode) ?? false;
+    return isDarkMode;
   }
 }

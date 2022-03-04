@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:pos_start/cour/error/failures.dart';
 import 'package:pos_start/cour/network/network_info.dart';
 import 'package:pos_start/data/datasources/local_data_source.dart';
 import 'package:pos_start/data/datasources/remote_data_source.dart';
@@ -13,4 +15,9 @@ class RepositoryImplementation implements Repository {
     required this.localDataSource,
     required this.networkInfo,
   });
+
+  @override
+  Future<Either<Failure, String>> getServerTime(int number) {
+    throw UnimplementedError();
+  }
 }

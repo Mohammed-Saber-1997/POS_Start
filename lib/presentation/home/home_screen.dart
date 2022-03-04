@@ -6,14 +6,17 @@ import 'package:pos_start/presentation/home/bottom_part.dart';
 import 'package:pos_start/presentation/widgets/shared_widgets.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
         children: [
-          const LeftPart(),
+          Expanded(
+            flex: 1,
+            child: const LeftPart(),
+          ),
           myVerticalDivider(),
           Expanded(
             flex: 3,
@@ -22,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                 const TopPart(),
                 const MainPart(),
                 myHorizontalDivider(),
-                const BottomPart(),
+                BottomPart(),
               ],
             ),
           ),

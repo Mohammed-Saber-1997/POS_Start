@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pos_start/cubit/app_cubit.dart';
+import 'package:pos_start/cour/app_prefs.dart';
 import 'package:pos_start/presentation/src/src.dart';
 
 class ShowSettingsDialog {
@@ -10,12 +10,11 @@ class ShowSettingsDialog {
     required String title,
     required String body,
   }) {
-    Color defaultBackgroundColor = AppCubit.get(context).isDark
+    Color defaultBackgroundColor = isDarkMode
         ? ColorManager.darkBackground2
         : ColorManager.lightBackground;
-    Color buttonColor = AppCubit.get(context).isDark
-        ? ColorManager.lightBlue
-        : ColorManager.darkBackground2;
+    Color buttonColor =
+        isDarkMode ? ColorManager.lightBlue : ColorManager.darkBackground2;
 
     showDialog(
       context: context,

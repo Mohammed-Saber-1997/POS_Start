@@ -1,14 +1,12 @@
+// import 'package:flutter/cupertino.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pos_start/cour/app_prefs.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
 import 'package:pos_start/presentation/home/show_search_dialog.dart';
 import 'package:pos_start/presentation/home/show_settings_dialog.dart';
 import 'package:pos_start/presentation/src/src.dart';
 import 'package:pos_start/presentation/widgets/default_button.dart';
-import 'package:pos_start/cour/di.dart' as di;
 
 class TopPart extends StatelessWidget {
   const TopPart({Key? key}) : super(key: key);
@@ -26,7 +24,7 @@ class TopPart extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: ResponsiveSize.w6),
             child: Row(
               children: [
-                myItem(
+                MyItem(
                   backgroundColor: ColorManager.greyWithOpacity,
                   borderColor: Colors.transparent,
                   isRectangle: true,
@@ -50,7 +48,7 @@ class TopPart extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                myItem(
+                MyItem(
                   backgroundColor: ColorManager.greyWithOpacity,
                   borderColor: Colors.transparent,
                   icon: SvgPicture.asset(
@@ -63,7 +61,7 @@ class TopPart extends StatelessWidget {
                   height: ResponsiveSize.w50,
                   width: ResponsiveSize.w50,
                 ),
-                myItem(
+                MyItem(
                   backgroundColor: ColorManager.greyWithOpacity,
                   borderColor: Colors.transparent,
                   icon: SvgPicture.asset(
@@ -80,7 +78,7 @@ class TopPart extends StatelessWidget {
                     body: 'Settings',
                   ),
                 ),
-                myItem(
+                MyItem(
                   backgroundColor: ColorManager.greyWithOpacity,
                   isRectangle: true,
                   borderColor: Colors.transparent,
@@ -93,7 +91,7 @@ class TopPart extends StatelessWidget {
                   ),
                   height: ResponsiveSize.w50,
                 ),
-                myItem(
+                MyItem(
                   backgroundColor: ColorManager.greyWithOpacity,
                   borderColor: ColorManager.white,
                   icon: SvgPicture.asset(

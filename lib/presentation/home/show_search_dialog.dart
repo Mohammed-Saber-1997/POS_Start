@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pos_start/cubit/app_cubit.dart';
+import 'package:pos_start/cour/app_prefs.dart';
 import 'package:pos_start/presentation/src/src.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:pos_start/presentation/widgets/default_button.dart';
@@ -14,8 +14,8 @@ class ShowSearchDialog {
     required String body,
   }) {
     Color defaultTextColor =
-        AppCubit.get(context).isDark ? ColorManager.white : ColorManager.black;
-    Color defaultBackgroundColor = AppCubit.get(context).isDark
+        isDarkMode ? ColorManager.white : ColorManager.black;
+    Color defaultBackgroundColor = isDarkMode
         ? ColorManager.darkBackground2
         : ColorManager.lightBackground;
 
@@ -76,7 +76,7 @@ class ShowSearchDialog {
                       children: [
                         Row(
                           children: [
-                            myItem(
+                            MyItem(
                               backgroundColor: ColorManager.greyWithOpacity,
                               borderColor: Colors.transparent,
                               isRectangle: true,

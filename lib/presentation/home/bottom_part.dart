@@ -11,7 +11,7 @@ import 'package:pos_start/presentation/home/show_search_dialog.dart';
 import '../src/src.dart';
 
 class BottomPart extends StatelessWidget {
-  const BottomPart({Key? key}) : super(key: key);
+  BottomPart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,12 @@ class BottomPart extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    myItem(
+                    MyItem(
                       name: 'Change Qty'.tr(),
                       backgroundColor: ColorManager.blue,
                       fontColor: ColorManager.white,
                     ),
-                    myItem(
+                    MyItem(
                       name: 'Discount'.tr(),
                       icon: SvgPicture.asset(
                         'assets/images/percentage-solid.svg',
@@ -41,7 +41,7 @@ class BottomPart extends StatelessWidget {
                         width: ResponsiveSize.w25,
                       ),
                     ),
-                    myItem(
+                    MyItem(
                       name: 'Price Chick'.tr(),
                       icon: SvgPicture.asset(
                         'assets/images/barcode-solid.svg',
@@ -50,7 +50,7 @@ class BottomPart extends StatelessWidget {
                         width: ResponsiveSize.w25,
                       ),
                     ),
-                    myItem(
+                    MyItem(
                       name: 'Repeat Last Item'.tr(),
                       width: ResponsiveSize.w100,
                       icon: SvgPicture.asset(
@@ -60,7 +60,7 @@ class BottomPart extends StatelessWidget {
                         width: ResponsiveSize.w25,
                       ),
                     ),
-                    myItem(
+                    MyItem(
                       name: 'Search'.tr(),
                       icon: SvgPicture.asset(
                         'assets/images/search-solid.svg',
@@ -74,14 +74,14 @@ class BottomPart extends StatelessWidget {
                         body: 'Item Search',
                       ),
                     ),
-                    myItem(
+                    MyItem(
                       name: 'Open Drawer'.tr(),
                     ),
                   ],
                 ),
                 Row(
                   children: [
-                    myItem(
+                    MyItem(
                       // SvgPicture.asset(
                       //   'assets/images/cancel.svg',
                       //   color: Colors.red,
@@ -104,7 +104,7 @@ class BottomPart extends StatelessWidget {
                             'are you Sure you want to Delete All items from currant invoice ?',
                       ),
                     ),
-                    myItem(
+                    MyItem(
                       isRectangle: true,
                       borderColor: ColorManager.orange,
                       name: 'Delete Selected Item'.tr(),
@@ -122,7 +122,7 @@ class BottomPart extends StatelessWidget {
                             'are you Sure you want to Delete this item from currant invoice ?',
                       ),
                     ),
-                    myItem(
+                    MyItem(
                       isRectangle: true,
                       name: 'Clear Input'.tr(),
                       icon: SvgPicture.asset(
@@ -133,7 +133,7 @@ class BottomPart extends StatelessWidget {
                       ),
                       width: ResponsiveSize.w120,
                     ),
-                    myItem(
+                    MyItem(
                       isRectangle: true,
                       name: 'Lock'.tr(),
                       icon: SvgPicture.asset(
@@ -157,7 +157,7 @@ class BottomPart extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        myItem(
+                        MyItem(
                           backgroundColor: ColorManager.defaultTextColor,
                           fontColor: ColorManager.reversedTextColor,
                           iconColor: ColorManager.reversedTextColor,
@@ -176,7 +176,7 @@ class BottomPart extends StatelessWidget {
                             body: 'Print',
                           ),
                         ),
-                        myItem(
+                        MyItem(
                           backgroundColor: ColorManager.defaultTextColor,
                           fontColor: ColorManager.reversedTextColor,
                           iconColor: ColorManager.reversedTextColor,
@@ -186,7 +186,7 @@ class BottomPart extends StatelessWidget {
                         ),
                       ],
                     ),
-                    myItem(
+                    MyItem(
                       backgroundColor: ColorManager.defaultTextColor,
                       fontColor: ColorManager.reversedTextColor,
                       name: 'Multiple Payment',
@@ -206,7 +206,7 @@ class BottomPart extends StatelessWidget {
                     ),
                   ],
                 ),
-                myItem(
+                MyItem(
                   isRectangle: true,
                   isSearchBox: true,
                   name: 'Refund',
