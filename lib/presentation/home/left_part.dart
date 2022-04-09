@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
-import 'package:pos_start/cubit/app_states.dart';
 import 'package:pos_start/presentation/src/src.dart';
 import 'package:pos_start/presentation/widgets/shared_widgets.dart';
 

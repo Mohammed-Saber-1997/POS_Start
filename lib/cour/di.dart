@@ -7,6 +7,8 @@ import 'package:pos_start/data/repositories/repository_implementation.dart';
 import 'package:pos_start/domain/repositories/repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../domain/usecases/login_usecase.dart';
+import '../presentation/login/cubit/login_cubit.dart';
 import 'app_prefs.dart';
 import 'converter/input_converter.dart';
 import 'network/network_info.dart';
@@ -16,17 +18,26 @@ final instance = GetIt.instance;
 Future<void> init() async {
   /// Features ->
   instance.registerFactory<AppCubit>(
-    () => AppCubit(appPreferences: instance<AppPreferences>()),
+    () => AppCubit(
+        appPreferences: instance<AppPreferences>(),
+        networkInfo: isWeb ? null : instance<NetworkInfo>()),
+  );
+
+  instance.registerFactory<LoginCubit>(
+    () => LoginCubit(loginUseCase: instance<LoginUseCase>()),
   );
 
   /// Use cases
+  instance.registerLazySingleton<LoginUseCase>(
+    () => LoginUseCase(repository: instance<Repository>()),
+  );
 
   /// Repository
   instance.registerLazySingleton<Repository>(
     () => RepositoryImplementation(
       localDataSource: instance<LocalDataSource>(),
       remoteDataSource: instance<RemoteDataSource>(),
-      networkInfo: instance<NetworkInfo>(),
+      networkInfo: isWeb ? null : instance<NetworkInfo>(),
     ),
   );
 
@@ -43,9 +54,16 @@ Future<void> init() async {
   instance.registerLazySingleton<InputConverter>(
     () => InputConverter(),
   );
-  instance.registerLazySingleton<NetworkInfo>(
-    () => NetworkInfoImplementation(instance<InternetConnectionChecker>()),
-  );
+
+  if (!isWeb) {
+    instance.registerLazySingleton<NetworkInfo>(
+      () => NetworkInfoImplementation(instance<InternetConnectionChecker>()),
+    );
+
+    instance.registerLazySingleton<InternetConnectionChecker>(
+      () => InternetConnectionChecker(),
+    );
+  }
 
   /// External
   // shared prefs instance
@@ -57,9 +75,5 @@ Future<void> init() async {
   // app prefs instance
   instance.registerLazySingleton<AppPreferences>(
     () => AppPreferences(instance<SharedPreferences>()),
-  );
-
-  instance.registerLazySingleton<InternetConnectionChecker>(
-    () => InternetConnectionChecker(),
   );
 }

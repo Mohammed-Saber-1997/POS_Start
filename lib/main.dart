@@ -12,12 +12,14 @@ void main() async {
   // CacheHelper.init();
   await di.init();
 
-  runApp(EasyLocalization(
-    supportedLocales: const [Locale("en", "US"), Locale("ar", "SA")],
-    path: assetsPathLocalisations,
-    fallbackLocale: const Locale("en", "US"),
-    child: MyApp(),
-  ));
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale("en", "US"), Locale("ar", "SA")],
+      path: assetsPathLocalisations,
+      fallbackLocale: const Locale("en", "US"),
+      child: MyApp(),
+    ),
+  );
 }
 
 ///

@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
-import 'package:pos_start/cubit/app_states.dart';
+import 'package:pos_start/presentation/login/cubit/login_cubit.dart';
 import 'package:pos_start/presentation/src/src.dart';
 import 'package:pos_start/cour/di.dart' as di;
 import 'package:pos_start/size_config.dart';
@@ -40,7 +40,11 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => di.instance<AppCubit>()
             ..getInitUIMode()
-            ..changeTime(),
+            ..changeTime()
+            ..getConnectionStatus(),
+        ),
+        BlocProvider(
+          create: (context) => di.instance<LoginCubit>(),
         ),
       ],
       child: BlocConsumer<AppCubit, AppStates>(

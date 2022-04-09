@@ -83,7 +83,7 @@ class ShowSearchDialog {
                               isSearchBox: true,
                               // borderColor: ColorManager.white,
                               fontColor: ColorManager.grey,
-                              name: 'Search ...'.tr(),
+                              name: 'Search'.tr() + ' ...',
                               fontSize: ResponsiveSize.w16,
                               icon: SvgPicture.asset(
                                 'assets/images/search-solid 2.svg',

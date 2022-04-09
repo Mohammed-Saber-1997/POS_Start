@@ -1,6 +1,7 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pos_start/cubit/app_cubit.dart';
 import 'package:pos_start/presentation/home/show_search_dialog.dart';
@@ -31,7 +32,7 @@ class TopPart extends StatelessWidget {
                   isSearchBox: true,
                   // borderColor: ColorManager.white,
                   fontColor: ColorManager.grey,
-                  name: 'Search ...'.tr(),
+                  name: 'Search'.tr() + ' ...',
                   fontSize: ResponsiveSize.w16,
                   icon: SvgPicture.asset(
                     'assets/images/search-solid 2.svg',
@@ -48,19 +49,7 @@ class TopPart extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                MyItem(
-                  backgroundColor: ColorManager.greyWithOpacity,
-                  borderColor: Colors.transparent,
-                  icon: SvgPicture.asset(
-                    'assets/images/wifi-solid.svg',
-                    color: ColorManager.orange,
-                    height: ResponsiveSize.w25,
-                    width: ResponsiveSize.w25,
-                  ),
-                  iconColor: ColorManager.orange,
-                  height: ResponsiveSize.w50,
-                  width: ResponsiveSize.w50,
-                ),
+                WifiWidget(),
                 MyItem(
                   backgroundColor: ColorManager.greyWithOpacity,
                   borderColor: Colors.transparent,
@@ -147,6 +136,45 @@ class TopPart extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class WifiWidget extends StatefulWidget {
+  const WifiWidget({Key? key}) : super(key: key);
+
+  @override
+  State<WifiWidget> createState() => _WifiWidgetState();
+}
+
+class _WifiWidgetState extends State<WifiWidget> {
+  @override
+  void dispose() {
+    AppCubit.get(context).subscription.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AppCubit appCubit = AppCubit.get(context);
+    return BlocConsumer<AppCubit, AppStates>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        return MyItem(
+          backgroundColor: ColorManager.greyWithOpacity,
+          borderColor: Colors.transparent,
+          icon: SvgPicture.asset(
+            'assets/images/wifi-solid.svg',
+            color:
+                appCubit.isConnected ? ColorManager.orange : ColorManager.white,
+            height: ResponsiveSize.w25,
+            width: ResponsiveSize.w25,
+          ),
+          // iconColor: ColorManager.orange,
+          height: ResponsiveSize.w50,
+          width: ResponsiveSize.w50,
+        );
+      },
     );
   }
 }
